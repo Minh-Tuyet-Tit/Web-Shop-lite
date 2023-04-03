@@ -1,5 +1,11 @@
 import { onAuthStateChanged } from 'firebase/auth';
-import { createContext, useContext, useEffect, useReducer, useState } from 'react';
+import {
+    createContext,
+    useContext,
+    useEffect,
+    useReducer,
+    useState,
+} from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { auth } from '../firebase/config';
@@ -22,11 +28,11 @@ function AdminContextProvider({ children }) {
         products: [],
     });
 
-    const [loading, setLoading] = useState(false)
+    const [loading, setLoading] = useState(false);
 
     const navigate = useNavigate();
     useEffect(() => {
-        setLoading(true)
+        setLoading(true);
         const getStore = async () => {
             try {
                 const categories = await getCatrgory();
@@ -44,8 +50,8 @@ function AdminContextProvider({ children }) {
                 }
             } catch (error) {
                 console.log(error);
-            }finally{
-                setLoading(false)
+            } finally {
+                setLoading(false);
             }
         };
         getStore();
@@ -87,7 +93,13 @@ function AdminContextProvider({ children }) {
         };
     }, [navigate]);
 
-    const adminData = { adminState, dispatch, storeState, storeDispatch, loading };
+    const adminData = {
+        adminState,
+        dispatch,
+        storeState,
+        storeDispatch,
+        loading,
+    };
     return (
         <AdminContext.Provider value={adminData}>
             {children}
