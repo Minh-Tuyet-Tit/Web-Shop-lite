@@ -49,7 +49,7 @@ function AdminContextProvider({ children }) {
             }
         };
         getStore();
-    }, [storeState]);
+    }, []);
 
     useEffect(() => {
         const destroy = async () => {

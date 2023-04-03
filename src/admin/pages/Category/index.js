@@ -51,7 +51,7 @@ function Category() {
             //setLoading(false);
         }
     };
-
+    
     return (
         <div className={cx('wrapper')}>
             {loading && <Loading />}
