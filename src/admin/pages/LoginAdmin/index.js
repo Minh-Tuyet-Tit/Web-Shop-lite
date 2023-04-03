@@ -10,8 +10,7 @@ import { useAdmin } from '../../../context/AdminContext';
 
 const cx = classNames.bind(styles);
 function LoginAdmin() {
-
-    const navigate = useNavigate()
+    const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
     const { adminState, dispatch } = useAdmin();
     const [values, setValues] = useState({
@@ -25,7 +24,7 @@ function LoginAdmin() {
         try {
             const admin = await getAdmin(values);
             if (admin) {
-                navigate('/admin/dashboard')
+                navigate('/admin/dashboard');
                 dispatch({
                     type: 'SETADMIN',
                     payload: {
@@ -34,8 +33,6 @@ function LoginAdmin() {
                         //data: data,
                     },
                 });
-
-
             } else {
                 console.log('Tài khoản hoặc mật khẩu không đúng');
             }
@@ -54,7 +51,7 @@ function LoginAdmin() {
     };
 
     if (adminState?.isAuthenticate) {
-        return <Navigate to={'/admin/dashboard'} />
+        return <Navigate to={'/admin/dashboard'} />;
     }
     // console.log(adminState);
 
@@ -86,6 +83,7 @@ function LoginAdmin() {
                     </div>
                     <div className={cx('form-group')}>
                         <input
+                            autocomplete="current-password"
                             value={values.password}
                             onChange={onChange}
                             name="password"
